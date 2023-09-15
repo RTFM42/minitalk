@@ -57,3 +57,7 @@ test.c
 # vim swp
 *.swp
 *.swo
+
+# bin file
+server
+client
