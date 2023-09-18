@@ -6,7 +6,7 @@
 #    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 20:23:39 by yushsato          #+#    #+#              #
-#    Updated: 2023/09/18 15:25:34 by yushsato         ###   ########.fr        #
+#    Updated: 2023/09/18 16:18:29 by yushsato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,6 @@ SRCS_PF	= ft_printf/ft_printf.c \
 		  ft_printf/extra/ex_putva_fd.c \
 		  ft_printf/extra/ex_uadd.c
 
-OBJS_PF	= $(SRCS_PF:.c=.o)
-
 all: $(SERVER) $(CLIENT)
 
 $(SERVER): $(SRCS_S)
@@ -53,7 +51,7 @@ $(CLIENT): $(SRCS_C)
 	$(CC) $(CFLAGS) -o $@ $< $(SRCS_PF) $(INCL_PF)
 
 clean:
-	rm -f $(OBJS_S) $(OBJS_C) $(OBJS_PF)
+	rm -f
 
 fclean: clean
 	rm -f $(SERVER) $(CLIENT)
