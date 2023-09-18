@@ -14,38 +14,32 @@
 #include <unistd.h>
 #include "ft_printf/ft_printf.h"
 
-static void	print2char(int two)
+unsigned char	btoc(unsigned short *bits)
 {
-	int	value;
-	int	base;
+	unsigned short	p;
+	unsigned char	r;
 
-	value = 0;
-	base = 1;
-	while (two > 0)
-	{
-		value = value + (two % 10) * base;
-		two = two / 10;
-		base = base * 2;
-	}
-	write(1, &value, 1);
-	return ;
+	p = 0;
+	r = 0;
+	while (p++ <= sizeof(char) * 8UL)
+		r ^= *(bits++) << (sizeof(char) * 8UL - p);
+	return (r);
 }
 
 static void	sig_action(int sign)
 {
-	static int	value = 0;
-	static int	count = 0;
+	static unsigned short	array[8];
+	static int				count = 0;
 
 	if (sign == 30)
 		sign = 0;
 	else
 		sign = 1;
-	value = value * 10 + sign;
+	array[count] = (unsigned short)sign;
 	if (++count == 8)
 	{
-		print2char(value);
+		ft_printf("%c", btoc(array));
 		count = 0;
-		value = 0;
 	}
 	return ;
 }

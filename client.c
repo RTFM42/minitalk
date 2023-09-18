@@ -13,42 +13,46 @@
 #include <signal.h>
 #include "./ft_printf/ft_printf.h"
 
-void	uctobit(unsigned char c, char *res)
+unsigned short	*ctob(unsigned char c, unsigned short *res)
 {
 	unsigned char	bit;
 
-	bit = 1 << 7;
+	if (res == NULL)
+		return (NULL);
+	bit = 0b10000000;
 	while (bit != 0)
 	{
 		if (c & bit)
-			*res++ = '1';
-		else
-			*res++ = '0';
+			*res = 1;
+		res++;
 		bit >>= 1;
 	}
+	return (res - 8);
 }
 
 int	main(int ac, char **av)
 {
 	int		pid;
 	char	*message;
-	char	res[9];
+	char	res[8];
 	int		n;
 
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
+		if (pid < 0)
+			return (1);
 		message = av[2];
 		while (*message)
 		{
-			uctobit(*message++, res);
+			ctob(*message++, res);
 			n = 0;
-			while (res[n])
+			while (n < 8)
 			{
-				if (res[n++] == '0')
-					kill(pid, SIGUSR1);			
+				if (res[n++] == 0)
+					kill(pid, SIGUSR1);
 				else
-					kill(pid, SIGUSR2);			
+					kill(pid, SIGUSR2);
 				usleep(100);
 			}
 		}
