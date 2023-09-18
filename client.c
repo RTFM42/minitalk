@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:31:39 by yushsato          #+#    #+#             */
-/*   Updated: 2023/09/15 19:55:01 by yushsato         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:29:43 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main(int ac, char **av)
 					kill(pid, SIGUSR1);
 				else
 					kill(pid, SIGUSR2);
-				usleep(1000);
+				usleep(25);
 			}
 		}
 	}
