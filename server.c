@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:31:32 by yushsato          #+#    #+#             */
-/*   Updated: 2023/09/15 19:54:07 by yushsato         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:44:56 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,11 @@ int	main(void)
 	struct sigaction	sa;
 
 	pid = (int)(getpid());
-    sigemptyset(&sa.sa_mask);
-    sa.sa_handler = sig_action;
-    sa.sa_flags = 0;
-    sigaction(SIGUSR1, &sa, NULL);
-    sigaction(SIGUSR2, &sa, NULL);
-
+	sigemptyset(&sa.sa_mask);
+	sa.sa_handler = sig_action;
+	sa.sa_flags = 0;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	ft_printf("%d\n", pid);
 	while (1)
 		usleep(100);

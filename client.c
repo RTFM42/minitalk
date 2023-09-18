@@ -6,16 +6,16 @@
 /*   By: yushsato <yushsato@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:31:39 by yushsato          #+#    #+#             */
-/*   Updated: 2023/09/18 14:29:43 by yushsato         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:44:19 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "./ft_printf/ft_printf.h"
 
-unsigned short *ctob(unsigned char c, unsigned short *res)
+unsigned short	*ctob(unsigned char c, unsigned short *res)
 {
-	unsigned char bit;
+	unsigned char	bit;
 
 	if (res == NULL)
 		return (NULL);
@@ -32,12 +32,12 @@ unsigned short *ctob(unsigned char c, unsigned short *res)
 	return (res - 8);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int pid;
-	char *message;
-	unsigned short res[8];
-	int n;
+	int				pid;
+	char			*message;
+	unsigned short	res[8];
+	int				n;
 
 	if (ac == 3)
 	{
