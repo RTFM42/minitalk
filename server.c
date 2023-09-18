@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:31:32 by yushsato          #+#    #+#             */
-/*   Updated: 2023/09/18 14:44:56 by yushsato         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:13:23 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ unsigned char	btoc(unsigned short *bits)
 
 	p = 0;
 	r = 0;
-	while (p++ < sizeof(char) * 8UL)
-		r ^= *(bits++) << (sizeof(char) * 8UL - p);
+	while (i < 8)
+		r |= bits[8 - i] << i++;
+	// while (p++ < sizeof(char) * 8)
+	// 	r ^= *(bits++) << (sizeof(char) * 8 - p);
 	return (r);
 }
 
