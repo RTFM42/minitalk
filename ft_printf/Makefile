@@ -23,6 +23,7 @@ SRCS	= ft_printf.c \
 		  libft/ft_putnbr_fd.c \
 		  libft/ft_putchar_fd.c \
 		  libft/ft_strlen.c \
+		  libft/ft_bzero.c \
 		  extra/ex_putchar_fd.c \
 		  extra/ex_putnbr_fd.c \
 		  extra/ex_putptr_fd.c \
