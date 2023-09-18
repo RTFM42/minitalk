@@ -32,10 +32,10 @@ unsigned short	*ctob(unsigned char c, unsigned short *res)
 
 int	main(int ac, char **av)
 {
-	int		pid;
-	char	*message;
-	char	res[8];
-	int		n;
+	int				pid;
+	char			*message;
+	unsigned short	res[8];
+	int				n;
 
 	if (ac == 3)
 	{
