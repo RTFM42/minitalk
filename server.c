@@ -31,12 +31,14 @@ static void	sig_action(int sign)
 	static unsigned short	array[8];
 	static int				count = 0;
 
-	if (sign == 30)
+	if (sign == SIGUSR1)
 		sign = 0;
-	else
+	else if (sign == SIGUSR2)
 		sign = 1;
-	array[count] = (unsigned short)sign;
-	if (++count == 8)
+	else
+		return ;
+	array[count++] = (unsigned short)sign;
+	if (count == 8)
 	{
 		ft_printf("%c", btoc(array));
 		count = 0;
@@ -46,12 +48,17 @@ static void	sig_action(int sign)
 
 int	main(void)
 {
-	int	pid;
+	int					pid;
+	struct sigaction	sa;
 
 	pid = (int)(getpid());
+    sigemptyset(&sa.sa_mask);
+    sa.sa_handler = sig_action;
+    sa.sa_flags = 0;
+    sigaction(SIGUSR1, &sa, NULL);
+    sigaction(SIGUSR2, &sa, NULL);
+
 	ft_printf("%d\n", pid);
-	signal(SIGUSR1, sig_action);
-	signal(SIGUSR2, sig_action);
 	while (1)
 		usleep(100);
 }

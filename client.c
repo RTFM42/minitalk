@@ -13,9 +13,9 @@
 #include <signal.h>
 #include "./ft_printf/ft_printf.h"
 
-unsigned short	*ctob(unsigned char c, unsigned short *res)
+unsigned short *ctob(unsigned char c, unsigned short *res)
 {
-	unsigned char	bit;
+	unsigned char bit;
 
 	if (res == NULL)
 		return (NULL);
@@ -24,18 +24,20 @@ unsigned short	*ctob(unsigned char c, unsigned short *res)
 	{
 		if (c & bit)
 			*res = 1;
+		else
+			*res = 0;
 		res++;
 		bit >>= 1;
 	}
 	return (res - 8);
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	int				pid;
-	char			*message;
-	unsigned short	res[8];
-	int				n;
+	int pid;
+	char *message;
+	unsigned short res[8];
+	int n;
 
 	if (ac == 3)
 	{
@@ -53,7 +55,7 @@ int	main(int ac, char **av)
 					kill(pid, SIGUSR1);
 				else
 					kill(pid, SIGUSR2);
-				usleep(100);
+				usleep(1000);
 			}
 		}
 	}
