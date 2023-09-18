@@ -6,15 +6,15 @@
 #    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 20:23:39 by yushsato          #+#    #+#              #
-#    Updated: 2023/09/15 19:10:09 by yushsato         ###   ########.fr        #
+#    Updated: 2023/09/18 15:25:34 by yushsato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SERVER	= server
 CLIENT	= client
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
 
 SRCS_S	= server.c
 SRCS_C	= client.c
@@ -47,10 +47,10 @@ OBJS_PF	= $(SRCS_PF:.c=.o)
 all: $(SERVER) $(CLIENT)
 
 $(SERVER): $(SRCS_S)
-	$(CC) $(CFLGS) -o $@ $< $(SRCS_PF) $(INCL_PF)
+	$(CC) $(CFLAGS) -o $@ $< $(SRCS_PF) $(INCL_PF)
 
 $(CLIENT): $(SRCS_C)
-	$(CC) $(CFLGS) -o $@ $< $(SRCS_PF) $(INCL_PF)
+	$(CC) $(CFLAGS) -o $@ $< $(SRCS_PF) $(INCL_PF)
 
 clean:
 	rm -f $(OBJS_S) $(OBJS_C) $(OBJS_PF)
